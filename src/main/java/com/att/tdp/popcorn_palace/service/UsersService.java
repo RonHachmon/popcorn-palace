@@ -20,7 +20,8 @@ public class UsersService {
     }
 
     public Users createUser(UserDTO userDTO) {
-        Users newUsers = new Users(userDTO.getName());
+        Users newUsers = new Users();
+        newUsers.setUsername(userDTO.getName());
         return userRepository.save(newUsers);
     }
 

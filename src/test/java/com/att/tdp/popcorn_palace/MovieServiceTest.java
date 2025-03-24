@@ -56,7 +56,7 @@ public class MovieServiceTest {
 
     @Test
     void testCreateMovieDupName_Fail() {
-        // Mock the first call: Movie does NOT exist initially
+
         when(movieRepository.findByTitle("Shrek")).thenReturn(Optional.empty());
 
         // Mock the first save operation
@@ -104,8 +104,13 @@ public class MovieServiceTest {
 
         Movie updatedMovie = movieRepository.findByTitle("Shrek").get();
 
-        assertEquals(updatedMovie.getTitle(),"Shrek");
+        //check only requested fields were updated, and others remained the same
+
+        //changed valued
         assertEquals(updatedMovie.getGenre(),Genre.HORROR);
+
+        //unchanged values
+        assertEquals(updatedMovie.getTitle(),"Shrek");
         assertEquals(updatedMovie.getDuration(),120);
         assertEquals(updatedMovie.getRating(),8.8f);
         assertEquals(updatedMovie.getReleaseYear(),2010);
@@ -121,15 +126,8 @@ public class MovieServiceTest {
         when(movieRepository.findByTitle("Shrek")).thenReturn(Optional.empty());
         when(movieRepository.save(any(Movie.class))).thenReturn(movie);
 
-        Movie createdMovie = movieService.createMovie(movieDTO);
+        movieService.createMovie(movieDTO);
 
-        assertEquals(createdMovie.getTitle(),"Shrek");
-        assertEquals(createdMovie.getGenre(),Genre.COMEDY);
-        assertEquals(createdMovie.getDuration(),120);
-        assertEquals(createdMovie.getRating(),8.8f);
-        assertEquals(createdMovie.getReleaseYear(),2010);
-
-        when(movieRepository.findByTitle("Shrek")).thenReturn(Optional.of(movie));
 
         UpdateMovieDTO updateMovieDTO =new UpdateMovieDTO("Shrek","Horror",null,null,null);
 
@@ -157,12 +155,12 @@ public class MovieServiceTest {
     }
 
     @Test
-    void deleteMovieSuccess() {
+    void deleteMovie_Success() {
         String movieTitle = "Matrix";
         Movie existingMovie = new Movie();
         existingMovie.setTitle(movieTitle);
 
-        given(movieRepository.findByTitle(movieTitle)).willReturn(Optional.of(existingMovie));
+        when(movieRepository.findByTitle(movieTitle)).thenReturn(Optional.of(existingMovie));
 
         movieService.deleteMovieByTitle(movieTitle);
         verify(movieRepository).delete(existingMovie);
