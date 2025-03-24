@@ -2,8 +2,11 @@ package com.att.tdp.popcorn_palace.entitys;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+
 import java.time.OffsetDateTime;
 import java.util.List;
+
 
 @Entity(name = "showtime")
 @Table(name = "showtime")

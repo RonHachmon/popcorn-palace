@@ -8,6 +8,8 @@ import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+
+
 @Entity(name = "theater")
 @Table(name = "theater")
 public class Theater {
@@ -33,7 +35,7 @@ public class Theater {
 
     }
 
-    public Theater(String name,Integer totalSits) {
+    public Theater( String name,Integer totalSits) {
         this.name = name;
         this.totalSits = totalSits;
     }

@@ -1,7 +1,7 @@
 package com.att.tdp.popcorn_palace.controller;
 
 import com.att.tdp.popcorn_palace.dto.ShowtimeDTO;
-import com.att.tdp.popcorn_palace.dto.ShowtimeResponse;
+import com.att.tdp.popcorn_palace.dto.response.ShowtimeResponse;
 import com.att.tdp.popcorn_palace.dto.ShowtimeUpdateDTO;
 import com.att.tdp.popcorn_palace.entitys.Showtime;
 import com.att.tdp.popcorn_palace.service.ShowtimeService;

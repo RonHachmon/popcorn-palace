@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 
 import java.util.List;
+import java.util.UUID;
 
 @Configuration
 public class PopcornConfig {
@@ -53,13 +54,20 @@ public class PopcornConfig {
     @Order(3)
     CommandLineRunner addingUsers(UsersRepository usersRepository) {
 
+
         return args -> {
             if (usersRepository.findAll().size() == 0) {
-                Users ron = new Users("Ron");
-                Users at = new Users("AT");
-                Users and = new Users("And");
-                Users t = new Users("T");
+                Users ron = new Users();
+                ron.setUsername("Ron");
 
+                Users at = new Users();
+                at.setUsername("At");
+
+                Users and = new Users();
+                and.setUsername("And");
+
+                Users t = new Users();
+                t.setUsername("T");
                 usersRepository.saveAll(List.of(ron, at, and, t));
             }
         };

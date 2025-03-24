@@ -50,11 +50,11 @@ public class BookingService {
                     "Seat number " + seatNumber + " is already booked."
             );
         }
+
         Booking booking = new Booking();
         booking.setSeatNumber(bookingDTO.getSeatNumber());
         booking.setShowtime(showtime);
         booking.setUser(user);
-        //Booking booking = new Booking(showtime,user,bookingDTO.getSeatNumber());
         return bookingRepository.save(booking);
     }
 

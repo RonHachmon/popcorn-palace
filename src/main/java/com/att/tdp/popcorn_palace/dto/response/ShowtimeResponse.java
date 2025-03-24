@@ -1,4 +1,4 @@
-package com.att.tdp.popcorn_palace.dto;
+package com.att.tdp.popcorn_palace.dto.response;
 
 import java.time.OffsetDateTime;
 

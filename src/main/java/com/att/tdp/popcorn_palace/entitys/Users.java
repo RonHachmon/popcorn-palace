@@ -2,9 +2,14 @@ package com.att.tdp.popcorn_palace.entitys;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.UUID;
+
+
+
 
 @Entity(name = "users")
 @Table(name = "users")
@@ -24,7 +29,8 @@ public class Users {
 
     public Users() {}
 
-    public Users(String username) {
+    public Users(UUID uuid,String username) {
+        this.id=uuid;
         this.username = username;
 
     }

@@ -83,10 +83,6 @@ public class MovieService {
         movieRepository.delete(movie);
     }
 
-    public void deleteMovieById(long id) {
-        getMovieById(id);
-        movieRepository.deleteById(id);
-    }
 
     public Movie getMovieById(long id) {
         return movieRepository.findById(id)
